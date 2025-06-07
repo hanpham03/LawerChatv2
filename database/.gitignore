@@ -1,0 +1,22 @@
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Backups
+backups/
+dumps/
+*.sql.backup
+*.sql.gz
+*.backup
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db 
