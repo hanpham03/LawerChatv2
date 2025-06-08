@@ -7,13 +7,13 @@ export class ChatSessionController {
   static async getAllSessions(req: Request, res: Response) {
     try {
       const sessions = await ChatSessionService.getAllSessions();
-      res.json({
+      return res.json({
         success: true,
         data: sessions,
       });
     } catch (error: any) {
       console.error("Error getting sessions:", error);
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         error: "Internal server error",
         message: error.message,
@@ -59,13 +59,13 @@ export class ChatSessionController {
         });
       }
 
-      res.json({
+      return res.json({
         success: true,
         data: session,
       });
     } catch (error: any) {
       console.error("Error getting session:", error);
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         error: "Internal server error",
         message: error.message,
@@ -80,13 +80,13 @@ export class ChatSessionController {
       const updateData = req.body;
 
       const session = await ChatSessionService.updateSession(id, updateData);
-      res.json({
+      return res.json({
         success: true,
         data: session,
       });
     } catch (error: any) {
       console.error("Error updating session:", error);
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         error: "Internal server error",
         message: error.message,
@@ -105,13 +105,13 @@ export class ChatSessionController {
       // Then delete the session
       await ChatSessionService.deleteSession(id);
 
-      res.json({
+      return res.json({
         success: true,
         message: "Session deleted successfully",
       });
     } catch (error: any) {
       console.error("Error deleting session:", error);
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         error: "Internal server error",
         message: error.message,
@@ -124,13 +124,13 @@ export class ChatSessionController {
     try {
       const { id } = req.params;
       const messages = await MessageService.getMessagesBySessionId(id);
-      res.json({
+      return res.json({
         success: true,
         data: messages,
       });
     } catch (error: any) {
       console.error("Error getting session messages:", error);
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         error: "Internal server error",
         message: error.message,
