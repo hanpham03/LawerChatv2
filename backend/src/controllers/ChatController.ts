@@ -49,7 +49,7 @@ export class ChatController {
         role: "assistant",
       });
 
-      res.json({
+      return res.json({
         success: true,
         data: {
           userMessage,
@@ -61,7 +61,7 @@ export class ChatController {
       });
     } catch (error: any) {
       console.error("Error in chat:", error);
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         error: "Internal server error",
         message: error.message,
@@ -74,7 +74,7 @@ export class ChatController {
     try {
       const isConnected = await DifyService.testConnection();
 
-      res.json({
+      return res.json({
         success: true,
         data: {
           connected: isConnected,
@@ -85,7 +85,7 @@ export class ChatController {
       });
     } catch (error: any) {
       console.error("Error testing Dify connection:", error);
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         error: "Internal server error",
         message: error.message,

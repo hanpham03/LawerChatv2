@@ -17,13 +17,13 @@ export class MessageController {
       const messages = await MessageService.getMessagesBySessionId(
         session_id as string
       );
-      res.json({
+      return res.json({
         success: true,
         data: messages,
       });
     } catch (error: any) {
       console.error("Error getting messages:", error);
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         error: "Internal server error",
         message: error.message,
@@ -50,13 +50,13 @@ export class MessageController {
       };
 
       const message = await MessageService.createMessage(messageData);
-      res.status(201).json({
+      return res.status(201).json({
         success: true,
         data: message,
       });
     } catch (error: any) {
       console.error("Error creating message:", error);
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         error: "Internal server error",
         message: error.message,

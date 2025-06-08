@@ -32,13 +32,13 @@ export class ChatSessionController {
       };
 
       const session = await ChatSessionService.createSession(sessionData);
-      res.status(201).json({
+      return res.status(201).json({
         success: true,
         data: session,
       });
     } catch (error: any) {
       console.error("Error creating session:", error);
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         error: "Internal server error",
         message: error.message,
