@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Sidebar from "@/components/layout/Sidebar";
 import ChatWindow from "@/components/chat/ChatWindow";
 import { useChat } from "@/hooks/useChat";
 
-export default function ChatPage() {
+function ChatPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(null);
@@ -31,6 +31,7 @@ export default function ChatPage() {
     } else {
       handleNewSession();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const handleSessionSelect = (sessionId: string) => {
@@ -111,5 +112,13 @@ export default function ChatPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function ChatPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ChatPageContent />
+    </Suspense>
   );
 }
