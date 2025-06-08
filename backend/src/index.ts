@@ -26,7 +26,12 @@ app.use(
 );
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
+    origin: [
+      "http://localhost:3000",
+      "http://127.0.0.1:3000",
+      "https://lawerchatv2frontend-git-main-hoaihanphamk123-gmailcoms-projects.vercel.app",
+      "https://lawerchatv2frontend-h8zsf5j5e.vercel.app",
+    ],
     credentials: true,
   })
 );
