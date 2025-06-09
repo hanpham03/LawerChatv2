@@ -246,15 +246,7 @@ npm test
 curl http://localhost:3001/health
 ```
 
-## 📦 Deployment
-
-Dự án sẵn sàng deploy lên:
-
-- **Frontend**: Vercel, Netlify
-- **Backend**: Render, Railway, Heroku
-- **Database**: Supabase (cloud-ready)
-
-Xem `DEPLOY.md` cho hướng dẫn chi tiết deployment.
+## 📦 Deployment: https://lawerchatv2frontend-h8zsf5j5e.vercel.app
 
 ## 🤝 Contributing
 
